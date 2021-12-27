@@ -1,5 +1,5 @@
 import MainMenu from './pages/mainMenu';
-import LoremIpsumPage from './pages/loremIpsumPage';
+import PrimalityCheckPage from './pages/primalityCheckPage';
 
 const pages = [
   {
@@ -7,8 +7,8 @@ const pages = [
     component: MainMenu,
   },
   {
-    name: 'Lorem Ipsum',
-    component: LoremIpsumPage,
+    name: 'Primality Check',
+    component: PrimalityCheckPage,
   },
 ];
 

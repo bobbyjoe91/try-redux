@@ -48,7 +48,7 @@ const MainMenu = ({navigation, isDarkMode, setDarkMode}) => {
       </SafeAreaView>
       <Button
         title={'To Next Page'}
-        onPress={() => navigation.navigate('Lorem Ipsum')}
+        onPress={() => navigation.navigate('Primality Check')}
       />
     </>
   );
