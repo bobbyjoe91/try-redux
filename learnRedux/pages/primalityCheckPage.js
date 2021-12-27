@@ -1,12 +1,23 @@
-import React, {useState, useEffect} from 'react';
-import {SafeAreaView, StyleSheet, Text, TextInput, View} from 'react-native';
+import React, {useState} from 'react';
+import {
+  Button,
+  Keyboard,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 
 import {useSelector, useDispatch} from 'react-redux';
 
+import {primalityCheck} from '../redux/actions';
+
 const LoremIpsumPage = () => {
   const [input, setInput] = useState('');
-  const {isDarkMode} = useSelector(state => ({
+  const {isDarkMode, isPrime} = useSelector(state => ({
     isDarkMode: state.isDarkMode,
+    isPrime: state.isPrime,
   }));
 
   const dispatcher = useDispatch();
@@ -19,6 +30,10 @@ const LoremIpsumPage = () => {
       alignItems: 'center',
       backgroundColor: isDarkMode ? 'black' : 'white',
     },
+    button: {
+      color: 'black',
+      backgroundColor: 'white',
+    },
     text: {
       color: isDarkMode ? 'white' : 'black',
       fontSize: 20,
@@ -27,11 +42,12 @@ const LoremIpsumPage = () => {
     input: {
       height: 50,
       width: '50%',
-      borderWidth: 1,
-      borderColor: '#ababab',
+      borderWidth: isDarkMode ? 3 : 1,
+      borderColor: isDarkMode ? 'white' : '#ababab',
       textAlign: 'center',
       fontSize: 25,
       borderRadius: 10,
+      color: isDarkMode ? 'white' : 'black',
     },
     inputView: {
       flexDirection: 'row',
@@ -46,11 +62,19 @@ const LoremIpsumPage = () => {
       <Text style={style.text}>Primality Check</Text>
       <View style={style.inputView}>
         <TextInput
+          placeholder={'Insert integer'}
           style={style.input}
           value={input}
           onChangeText={text => setInput(text)}
+          onEndEditing={e => dispatcher(primalityCheck(e.nativeEvent.text))}
         />
       </View>
+      <Button
+        title={'Check!'}
+        color={isDarkMode ? 'cyan' : 'blue'}
+        onPress={Keyboard.dismiss}
+      />
+      <Text style={style.text}>{isPrime}</Text>
     </SafeAreaView>
   );
 };

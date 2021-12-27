@@ -14,26 +14,29 @@ const reducer = (state = initialState, action) => {
       stateCopy.isDarkMode = !stateCopy.isDarkMode;
       return stateCopy;
     case 'PRIMALITY_CHECK':
-      try {
-        let number = Number(action.payload);
-        if (number === 2) {
-          stateCopy.isPrime = true;
-        } else if (number % 2 === 0) {
-          stateCopy.isPrime = false;
-        } else {
-          let nFactor = 0;
-          for (
-            let divisor = 3;
-            divisor < Math.ceil(Math.sqrt(number));
-            divisor++
-          ) {
-            number % divisor === 0 && nFactor++;
-          }
+      if (action.payload) {
+        let number = parseInt(action.payload, 10);
+        if (!isNaN(number)) {
+          if (number === 2) {
+            stateCopy.isPrime = `${number} is prime.`;
+          } else if (number % 2 === 0 || number < 2) {
+            stateCopy.isPrime = `${number} is not prime.`;
+          } else {
+            let nFactor = 0;
+            let limit = Math.ceil(Math.sqrt(number));
+            for (let divisor = 3; divisor <= limit; divisor++) {
+              number % divisor === 0 && nFactor++;
+            }
 
-          stateCopy.isPrime = !nFactor;
+            stateCopy.isPrime = nFactor
+              ? `${number} is not prime.`
+              : `${number} is prime.`;
+          }
+        } else {
+          stateCopy.isPrime = 'Invalid input';
         }
-      } catch (err) {
-        stateCopy.isPrime = 'invalid';
+      } else {
+        stateCopy.isPrime = '';
       }
 
       return stateCopy;
