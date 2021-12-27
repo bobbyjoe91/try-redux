@@ -1,20 +1,19 @@
-export const setX = value => {
+export const toggleHeader = value => {
   return {
-    type: 'SET_X',
+    type: 'TOGGLE_HEADER',
     payload: value,
   };
 };
 
-export const setY = value => {
+export const enableDarkMode = () => {
   return {
-    type: 'SET_Y',
-    payload: value,
+    type: 'ENABLE_DARK_MODE',
   };
 };
 
-export const setAlpha = value => {
+export const primalityCheck = value => {
   return {
-    type: 'SET_ALPHA',
+    type: 'PRIMALITY_CHECK',
     payload: value,
   };
 };

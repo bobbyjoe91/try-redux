@@ -1,7 +1,5 @@
 const initialState = {
-  x: 0,
-  y: 0,
-  alpha: 0.0,
+  isDarkMode: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -11,14 +9,8 @@ const reducer = (state = initialState, action) => {
 
   const stateCopy = {...state};
   switch (action.type) {
-    case 'SET_X':
-      stateCopy.x = action.payload;
-      return stateCopy;
-    case 'SET_Y':
-      stateCopy.y = action.payload;
-      return stateCopy;
-    case 'SET_ALPHA':
-      stateCopy.alpha = action.payload;
+    case 'ENABLE_DARK_MODE':
+      stateCopy.isDarkMode = !stateCopy.isDarkMode;
       return stateCopy;
     default:
       return state;
