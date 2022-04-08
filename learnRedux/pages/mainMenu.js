@@ -8,9 +8,9 @@ import {
   View,
 } from 'react-native';
 
-import {connect} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import {enableDarkMode} from '../redux/actions';
+import { enableDarkMode } from '../redux/actions';
 
 const style = StyleSheet.create({
   display: {
@@ -30,7 +30,10 @@ const style = StyleSheet.create({
   },
 });
 
-const MainMenu = ({navigation, isDarkMode, setDarkMode}) => {
+const MainMenu = ({ navigation }) => {
+  const isDarkMode = useSelector((state) => state.isDarkMode);
+  const dispatch = useDispatch();
+
   return (
     <>
       <SafeAreaView style={style.display}>
@@ -40,7 +43,7 @@ const MainMenu = ({navigation, isDarkMode, setDarkMode}) => {
             <Switch
               thumbColor={{false: 'white', true: 'white'}}
               trackColor={isDarkMode ? '#F5DD4B' : '#F4F3F4'}
-              onValueChange={setDarkMode}
+              onValueChange={() => dispatch(enableDarkMode())}
               value={isDarkMode}
             />
           </View>
@@ -54,12 +57,4 @@ const MainMenu = ({navigation, isDarkMode, setDarkMode}) => {
   );
 };
 
-const mapStateToProps = state => ({
-  isDarkMode: state.isDarkMode,
-});
-
-const mapDispatchToProps = dispatch => ({
-  setDarkMode: _ => dispatch(enableDarkMode()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(MainMenu);
+export default MainMenu;

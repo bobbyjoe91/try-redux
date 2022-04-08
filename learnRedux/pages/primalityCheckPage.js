@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   Keyboard,
@@ -9,9 +9,9 @@ import {
   View,
 } from 'react-native';
 
-import {useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
-import {primalityCheck} from '../redux/actions';
+import { primalityCheck } from '../redux/actions';
 
 const LoremIpsumPage = () => {
   const [input, setInput] = useState('');
@@ -62,7 +62,7 @@ const LoremIpsumPage = () => {
       <Text style={style.text}>Primality Check</Text>
       <View style={style.inputView}>
         <TextInput
-          placeholder={'Insert integer'}
+          placeholder='Insert integer'
           style={style.input}
           value={input}
           onChangeText={text => setInput(text)}
@@ -70,7 +70,7 @@ const LoremIpsumPage = () => {
         />
       </View>
       <Button
-        title={'Check!'}
+        title='Check!'
         color={isDarkMode ? 'cyan' : 'blue'}
         onPress={Keyboard.dismiss}
       />
