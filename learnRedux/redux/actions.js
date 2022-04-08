@@ -17,3 +17,10 @@ export const primalityCheck = value => {
     payload: value,
   };
 };
+
+// learn redux-saga
+export const sagaDarkMode = () => {
+  return {
+    type: 'SAGA_DARK_MODE',
+  };
+};

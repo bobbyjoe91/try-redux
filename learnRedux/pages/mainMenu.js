@@ -10,7 +10,7 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { enableDarkMode } from '../redux/actions';
+import { enableDarkMode, sagaDarkMode } from '../redux/actions';
 
 const style = StyleSheet.create({
   display: {
@@ -50,7 +50,11 @@ const MainMenu = ({ navigation }) => {
         </View>
       </SafeAreaView>
       <Button
-        title={'To Next Page'}
+        title='Say Hello'
+        onPress={() => dispatch(sagaDarkMode())}
+      />
+      <Button
+        title='To Next Page'
         onPress={() => navigation.navigate('Primality Check')}
       />
     </>
