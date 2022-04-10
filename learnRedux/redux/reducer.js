@@ -1,6 +1,7 @@
 const initialState = {
   isDarkMode: false,
   isPrime: null,
+  colors: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -13,6 +14,11 @@ const reducer = (state = initialState, action) => {
     case 'ENABLE_DARK_MODE':
       stateCopy.isDarkMode = !stateCopy.isDarkMode;
       return stateCopy;
+    case 'SET_COLORS':
+      stateCopy.colors = action.payload;
+      return stateCopy;
+    case 'EXECUTE_TAKE_WORKER':
+      console.log('take worker');
     case 'PRIMALITY_CHECK':
       if (action.payload) {
         let number = parseInt(action.payload, 10);

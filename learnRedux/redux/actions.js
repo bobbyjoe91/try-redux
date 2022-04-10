@@ -24,3 +24,25 @@ export const sagaDarkMode = () => {
     type: 'SAGA_DARK_MODE',
   };
 };
+
+export const executeTakeWorker = () => {
+  return {
+    type: 'EXECUTE_TAKE_WORKER',
+  };
+};
+
+// action for triggering saga
+export const loadColors = (value) => {
+  return {
+    type: 'LOAD_COLORS',
+    payload: value
+  };
+}
+
+// action for triggering reducer (saving data to state)
+export const setColors = (value) => {
+  return {
+    type: 'SET_COLORS',
+    payload: value,
+  }
+}

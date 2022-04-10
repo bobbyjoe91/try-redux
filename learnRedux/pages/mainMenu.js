@@ -54,6 +54,10 @@ const MainMenu = ({ navigation }) => {
         onPress={() => dispatch(sagaDarkMode())}
       />
       <Button
+        title='To Colors Page'
+        onPress={() => navigation.navigate('Random Color')}
+      />
+      <Button
         title='To Next Page'
         onPress={() => navigation.navigate('Primality Check')}
       />
